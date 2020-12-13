@@ -3,7 +3,7 @@ package in.kkd.pom;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class BasePage  extends Page{
@@ -55,5 +55,11 @@ public class BasePage  extends Page{
             e.printStackTrace();
         }
 
+    }
+
+    @Override
+    public Actions getAction() {
+        Actions action = new Actions(driver);
+        return action;
     }
 }

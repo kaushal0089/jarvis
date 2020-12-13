@@ -2,6 +2,7 @@ package in.kkd.pom;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 public class HomePage extends BasePage{
 
@@ -24,5 +25,23 @@ public class HomePage extends BasePage{
 
     }
 
+    public By getMenuLocator(String menuVal){
+        return By.xpath("//a[text()="+"'"+ menuVal+ "'"+"]");
+    }
 
+    public WebElement getMenu(String menuItemval){
+        System.out.println(getMenuLocator(menuItemval).toString());
+        return getElement(getMenuLocator(menuItemval));
+    }
+
+    @Override
+    public Actions getAction() {
+        return super.getAction();
+    }
+    public void clickMenuItem(String menuItem){
+        waitForElementPresent(getMenuLocator(menuItem));
+        WebElement menu= getMenu(menuItem);
+        getAction().moveToElement(menu).perform();
+        getAction().click().build().perform();
+    }
 }

@@ -2,6 +2,7 @@ package in.kkd.pom;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class Page {
@@ -20,6 +21,7 @@ public abstract class Page {
     public abstract WebElement getElement(By locator);
     public abstract void waitForElementPresent(By locator);
     public abstract void waitForPageTitle(String title);
+    public abstract Actions getAction();
 
     public <TPage extends BasePage> TPage getInstance(Class<TPage> PageClass){
 
