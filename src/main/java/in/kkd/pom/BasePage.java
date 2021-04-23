@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BasePage  extends Page{
 
@@ -25,7 +26,9 @@ public class BasePage  extends Page{
     @Override
     public WebElement getElement(By locator) {
         WebElement element = null;
+        WebDriverWait wait = new WebDriverWait(driver,30);
         try{
+            wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
             element = driver.findElement(locator);
             return element;
         }

@@ -12,6 +12,12 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+
+import in.kkd.Utility.TestUtil;
+
 
 public class MarketPlaceLogin {
 
@@ -35,11 +41,26 @@ public class MarketPlaceLogin {
         driver.findElement(login).click();
     }
 
+
+    @DataProvider
+    public Iterator<Object[]> getTestData() throws IOException {
+        ArrayList<Object[]> testData = TestUtil.getDataFromExcell();
+        System.out.println(testData.size());
+        return testData.iterator();
+    }
+    @Test(dataProvider = "getTestData")
     public void loginToMarketplace(String strUserName, String strPassword, ExtentTest test){
+        System.out.println("dataprovider: "+strUserName+strPassword);
         this.setUserName(strUserName);
         test.log(LogStatus.PASS, "Username is set as : "+strUserName);
         this.setPassword(strPassword);
         test.log(LogStatus.PASS, "Password is set as : "+strPassword);
         this.loginClick();
     }
+
+    @Test
+    public void checktest(){
+        System.out.println("runningnnn");
+    }
+
 }

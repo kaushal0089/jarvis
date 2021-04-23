@@ -74,7 +74,7 @@ public class MarketPlaceTest {
         Thread.sleep(3000);
         driver.quit();
     }
-    //@Test
+    @Test
     public void nginxCloudService() throws InterruptedException {
         System.setProperty("webdriver.chrome.driver","chromedriver.exe");
         driver = new ChromeDriver();

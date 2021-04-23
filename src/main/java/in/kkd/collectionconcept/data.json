@@ -1,0 +1,10 @@
+{
+  "name":"Simpsons family",
+  "members":[
+    {"firstName":"Homer", "lastName":"kanjariya"},
+    {"firstName":"Marge", "lastName":"Simpson"},
+    {"firstName":"Bart", "lastName":"Simpson"},
+    {"firstName":"Lisa", "lastName":"Simpson"},
+    {"firstName":"Maggie", "lastName":"Simpson"}
+  ]
+}

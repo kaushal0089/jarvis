@@ -3,23 +3,27 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 public abstract class DriverManager {
-    protected WebDriver driver;
+//    WebDriver  driver;
+    protected static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 //    protected abstract void startService();
 //    protected abstract void stopService();
+//    protected abstract void createDriver();
     protected abstract void createDriver();
 
     public void quitDriver(){
         if(driver != null){
-            driver.quit();
+            driver.get().quit();
             driver=null;
         }
     }
 
-    public WebDriver getDriver() {
-        if(driver == null){
+    public ThreadLocal<WebDriver> getDriver() {
+//        if(driver == null){
 //            startService();
-            createDriver();
-        }
+        createDriver();
+//            driver = new ThreadLocal<>();
+//            driver.set(createDriver());
+//        }
         return driver;
     }
 }

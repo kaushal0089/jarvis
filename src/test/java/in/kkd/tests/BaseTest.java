@@ -6,46 +6,52 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import in.kkd.pom.*;
 
 import java.io.File;
+import java.net.URL;
 import java.security.PublicKey;
+import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
 
-    WebDriver driver;
+    ThreadLocal<WebDriver> driver ;
     DriverManager driverManager;
     public  Page page;
 
     @BeforeMethod
-    @Parameters(value= {"browser"})
-    public void setUp(String browser){
+    @Parameters({"browser","url"})
+    public void setUp(String browser, @Optional("optional") String url){
         if(browser.equalsIgnoreCase("chrome")){
             driverManager = DriverManagerFactory.getManager(DriverType.CHROME);
+//            driver.set(driverManager.getDriver());
             driver = driverManager.getDriver();
         }
         if(browser.equalsIgnoreCase("firefox")){
             driverManager = DriverManagerFactory.getManager(DriverType.FIREFOX);
             driver = driverManager.getDriver();
+//            driver.set(driverManager.getDriver());
         }
-
-        driver.get("http://10.151.35.38:30000/login");
+        WebDriverWait wait;
+        driver.get().manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+//            driver.get().get(url);
         try {
             Thread.sleep(5000);
-        } catch (InterruptedException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        page = new BasePage(driver);
+        page = new BasePage(driver.get());
     }
 
     @AfterMethod
     public void tearDown(){
-        driver.quit();
+        driver.get().quit();
     }
 
-    @AfterMethod
+//    @AfterMethod
     public void takeSnapShot() throws Exception{
         //Convert web driver object to TakeScreenshot
 //        if(testResult.getStatus()==ITestResult.FAILURE) {

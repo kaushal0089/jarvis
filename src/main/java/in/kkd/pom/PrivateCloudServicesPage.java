@@ -27,7 +27,7 @@ public class PrivateCloudServicesPage extends BasePage{
 
     public void addToCart(String productName){
         String productLocator = "//div[@class='card']//h4[text()='"+productName+"']/parent::*/parent::*/parent::*/following-sibling::*/div/a[1]";
-
+//        waitForElementPresent(By.xpath(productLocator));
         driver.findElement(By.xpath(productLocator)).click();
     }
 

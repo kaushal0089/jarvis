@@ -30,7 +30,7 @@ public class FactoryPatternTest {
     }
     @BeforeMethod
     public void beforeMethod(){
-        driver = driverManager.getDriver();
+        driver = driverManager.getDriver().get();
     }
     @AfterMethod
     public void afterMethod(){

@@ -3,7 +3,8 @@ package in.kkd.collectionconcept;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MapConcepts {
+public class
+MapConcepts {
 
     public static void main(String[] args){
 

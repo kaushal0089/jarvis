@@ -1,5 +1,6 @@
 package in.kkd.pom;
 import org.openqa.selenium.Platform;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -43,12 +44,14 @@ public class ChromeDriverManager extends DriverManager {
         capabilities.setBrowserName("chrome");
 //        capabilities.setVersion("86");
 //        driver = new ChromeDriver(options);
-        try{
+//        try{
 //           driver = new ChromeDriver();
-         driver = new RemoteWebDriver(new URL("http://10.212.136.176:4444/wd/hub"),capabilities);
-        }
-        catch (Exception e){e.printStackTrace();}
+//         driver = new RemoteWebDriver(new URL("http://10.212.136.176:4444/wd/hub"),capabilities);
+//        }
+//        catch (Exception e){e.printStackTrace();}
 
+//        driver = new ChromeDriver();
+        driver.set(new ChromeDriver());
     }
 
 }
